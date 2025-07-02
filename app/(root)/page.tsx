@@ -1,23 +1,34 @@
 import React from 'react'
 import SearchForm from "@/components/SearchForm";
-import StartupCard from "@/components/StartupCard";
+import StartupCard, {StartupTypeCard} from "@/components/StartupCard";
+import {STARTUP_QUERY} from "@/sanity/lib/queries";
+import {sanityFetch, SanityLive} from "@/sanity/lib/live";
+import {auth} from "@/auth";
 
 export default async function Home({searchParams}:
                                    {
                                        searchParams: Promise<{ query?: string }>
                                    }) {
     const query = (await searchParams).query;
-    const posts = [{
-        _createdAt: new Date(),
-        views: 55,
-        author: {_id: 1, name:'Elon Musk'},
-        _id: 1,
-        description: 'Lorem ipsum dolor sit amet, consectetur ',
-        image: "https://picsum.photos/id/1/350/150",
-        category: 'Robots',
-        title: "We Robots"
+    const params = {search:query || null}
+    // const posts= await client.fetch(STARTUP_QUERY);
+    const session= await auth();
+    console.log(session?.id);
 
-    }]
+    const {data:posts}= await sanityFetch({query: STARTUP_QUERY,params}); // if you want to use Live Content API on Sanity
+
+    // console.log(JSON.stringify(posts, null, 2))
+    // const posts = [{
+    //     _createdAt: new Date(),
+    //     views: 55,
+    //     author: {_id: 1, name:'Elon Musk'},
+    //     _id: 1,
+    //     description: 'Lorem ipsum dolor sit amet, consectetur ',
+    //     image: "https://picsum.photos/id/1/350/150",
+    //     category: 'Robots',
+    //     title: "We Robots"
+    //
+    // }]
     return (
         < >
             <section className="pink_container pattern">
@@ -32,7 +43,7 @@ export default async function Home({searchParams}:
                 </p>
                 <ul className="card_grid">
                     {posts ?.length > 0 ? (
-                        posts.map((post)=>(
+                        posts.map((post:  StartupTypeCard)=>(
                             <StartupCard key={post?._id} post={post} />
                         ))
                     ):
@@ -42,6 +53,7 @@ export default async function Home({searchParams}:
                 }
                 </ul>
             </section>
+            <SanityLive/>
         </>
     )
 }
