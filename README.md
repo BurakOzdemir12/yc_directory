@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<p   class="d-flex align-center"  >
+  <img src="ss/main.png"  />
+</p>
 
-## Getting Started
+<br/>
+<p align="center" >
+  <a href="https://skillicons.dev">
+    <img  src="https://skillicons.dev/icons?i=nextjs,react,ts,tailwind,sentry,npm,vercel" />
+<img src="https://skills.syvixor.com/api/icons?i=sanity" />  
+</a>
+</p>
+<a  style="cursor: pointer"    href="https://yc-directory-gray-six.vercel.app/" >
+<p  align="center" style="font-size:large">🚀 Live Demo</p> 
+</a>
 
-First, run the development server:
+<section id="Introduction"  >
+<h1 align="center" > Startup Directory Platform</h1>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<p align="left" style="font-size: large"  > A Next.js 15 platform where entrepreneurs can submit their startup ideas for virtual pitch competitions, browse other pitches, and gain exposure through a clean minimalistic design for a smooth user experience.</p> 
+</section>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<section id="TechStack" >
+<h2>⚙️ Tech Stack</h2>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+<ul  style="font-size: 1.2rem">
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+<li>React 19</li>
+<li>Next.js 15</li>
+<li>Sanity</li>
+<li>TailwindCSS</li>
+<li>ShadCN</li>
+<li>TypeScript</li>
+<li>Sentry</li>
+<li>Vercel</li>
+</ul>
+</section>
+<section id="Features" style="font-size: 1rem" >
+<h2>🔋 Features</h2>
+👉 Live Content API: Displays the latest startup ideas dynamically on the homepage using Sanity's Content API.
 
-## Learn More
+👉 GitHub Authentication: Allows users to log in easily using their GitHub account.
 
-To learn more about Next.js, take a look at the following resources:
+👉 Pitch Submission: Users can submit startup ideas, including title, description, category, and multimedia links ( image
+or video).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+👉 View Pitches: Browse through submitted ideas with filtering options by category.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+👉 Pitch Details Page: Click on any pitch to view its details, with multimedia and description displayed.
 
-## Deploy on Vercel
+👉 Profile Page: Users can view the list of pitches they've submitted.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+👉 Editor Picks: Admins can highlight top startup ideas using the "Editor Picks" feature managed via Sanity Studio.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+👉 Views Counter: Tracks the number of views for each pitch instead of an upvote system.
+
+👉 Search: Search functionality to load and view pitches efficiently.
+
+👉 Minimalistic Design: Fresh and simple UI with only the essential pages for ease of use and a clean aesthetic.
+
+and many more, including the latest React 19, Next.js 15 and Sanity features alongside code architecture and reusability
+</section>
