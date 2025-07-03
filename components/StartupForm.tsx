@@ -12,11 +12,14 @@ import {useToast} from "@sanity/ui";
 import {useSonner} from "sonner";
 import {toast} from 'sonner'
 import {useRouter} from "next/navigation";
+import {creativePitch} from "@/lib/actions";
 
 const StartupForm = () => {
     const [errors, setErrors] = useState<Record<string, string>>({})
     const [pitch, setPitch] = React.useState("");
     const router = useRouter();
+
+
     const handleFormSubmit = async (prevState: any, formData: FormData) => {
         try {
             const formValues = {
@@ -27,23 +30,30 @@ const StartupForm = () => {
                 pitch,
             }
             await formSchema.parseAsync(formValues);
-            // const result = await createIdea(prevState, formData, pitch);
-            //
-            // if (result.status === "SUCCESS") {
-            //     toast("Success", {description: "Startup submitted successfully"})
-            //     setErrors({});
-            //     setPitch("");
-            //     router.push(`/startup/${result.id}`);
-            // }
-            // return result;
+            const result = await creativePitch(prevState, formData, pitch);
 
-            console.log(formValues);
+            if (result.status === "SUCCESS") {
+                toast("Success", {
+                    description: "Startup submitted successfully",
+                    style: {backgroundColor: "green", color: "white", fontWeight: "bolder", fontSize: "1rem"}
+                })
+
+                setErrors({});
+                setPitch("");
+                router.push(`/startup/${result._id}`);
+            }
+            return result;
+
         } catch (e) {
             if (e instanceof z.ZodError) {
                 const fieldErrors = e.flatten().fieldErrors;
 
                 setErrors(fieldErrors as unknown as Record<string, string>);
-                toast("Error", {description: "Please check your inputs and try again"})
+                toast("ERROR", {
+                    description: "Please check your inputs and try again",
+                    style: {backgroundColor: "darkred", color: "white", fontWeight: "bolder", fontSize: "1rem"}
+                })
+
                 return {...prevState, error: 'Validation failed', status: "ERROR"};
             }
             return {
